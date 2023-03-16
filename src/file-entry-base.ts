@@ -1,7 +1,7 @@
+import { IFileEntry } from 'lite-ts-fs';
 import { basename } from 'path';
 
 import { QiniuFileFactory } from './file-factory';
-import { IFileEntry } from './i-file-entry';
 
 export abstract class QiniuFileEntryBase implements IFileEntry {
     public static errNotImplemented = new Error('未实现');
@@ -21,6 +21,10 @@ export abstract class QiniuFileEntryBase implements IFileEntry {
         this.bucket = paths.shift();
         this.relativePath = paths.join('/');
         this.name = basename(this.path);
+    }
+
+    public async copyTo() {
+        throw QiniuFileEntryBase.errNotImplemented;
     }
 
     public async moveTo() {

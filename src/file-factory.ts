@@ -1,8 +1,8 @@
+import { FileFactoryBase } from 'lite-ts-fs';
 import * as qiniu from 'qiniu';
 
 import { QiniuDirectory } from './directory';
 import { QiniuFile } from './file';
-import { FileFactoryBase } from './file-factory-base';
 
 export class Qiniu {
     public useCdnDomain: boolean;
