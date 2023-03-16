@@ -1,9 +1,9 @@
+import { IFile } from 'lite-ts-fs';
 import { extname } from 'path';
 import * as qiniu from 'qiniu';
 
 import { QiniuFileEntryBase } from './file-entry-base';
 import { QiniuFileFactory } from './file-factory';
-import { IFile } from './i-file';
 
 const extOfMimeType = {
     '.json': 'application/json',
@@ -22,6 +22,11 @@ export class QiniuFile extends QiniuFileEntryBase implements IFile {
         paths: string[],
     ) {
         super(factory, paths);
+    }
+
+    copyTo() {
+        throw QiniuFileEntryBase.errNotImplemented;
+        return null;
     }
 
     public async exists() {
@@ -71,7 +76,7 @@ export class QiniuFile extends QiniuFileEntryBase implements IFile {
             putExtra.mimeType = extOfMimeType[ext];
 
         let method = 'put';
-        if (v.constructor.name == 'FsFile') {
+        if (v.constructor.name == 'FsFile' || v.constructor.name == 'File') {
             method = 'putFile';
             v = (v as IFile).path;
         }

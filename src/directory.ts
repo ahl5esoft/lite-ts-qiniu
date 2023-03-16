@@ -1,7 +1,14 @@
+import { IDirectory } from 'lite-ts-fs';
+
 import { QiniuFileEntryBase } from './file-entry-base';
-import { IDirectory } from './i-directory';
 
 export class QiniuDirectory extends QiniuFileEntryBase implements IDirectory {
+
+    public async copyTo() {
+        throw QiniuFileEntryBase.errNotImplemented;
+        return null;
+    }
+
     public async create() { }
 
     public async exists() {
