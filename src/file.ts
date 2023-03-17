@@ -1,4 +1,4 @@
-import { IFile } from 'lite-ts-fs';
+import { File, IFile } from 'lite-ts-fs';
 import { extname } from 'path';
 import * as qiniu from 'qiniu';
 
@@ -76,7 +76,7 @@ export class QiniuFile extends QiniuFileEntryBase implements IFile {
             putExtra.mimeType = extOfMimeType[ext];
 
         let method = 'put';
-        if (v.constructor.name == 'FsFile' || v.constructor.name == 'File') {
+        if (v.constructor == File) {
             method = 'putFile';
             v = (v as IFile).path;
         }
