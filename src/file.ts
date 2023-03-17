@@ -76,7 +76,7 @@ export class QiniuFile extends QiniuFileEntryBase implements IFile {
             putExtra.mimeType = extOfMimeType[ext];
 
         let method = 'put';
-        if (v.constructor == File) {
+        if (v instanceof File) {
             method = 'putFile';
             v = (v as IFile).path;
         }
