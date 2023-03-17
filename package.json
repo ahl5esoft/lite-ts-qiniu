@@ -6,7 +6,7 @@
   "description": "七牛云文件上传",
   "dependencies": {
     "js-yaml": "^4.1.0",
-    "lite-ts-fs": "^1.4.1",
+    "lite-ts-fs": "^1.6.1",
     "qiniu": "^7.7.0"
   },
   "devDependencies": {
